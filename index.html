@@ -1,0 +1,1609 @@
+﻿<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HayShop - Հայկական Խանութների Հարթակ</title>
+    <meta name="description" content="HayShop-ը տրամադրում է հայկական խանութների և ծառայությունների գրացուցակը՝ արագ, պարզ և շարժական։">
+    <meta property="og:title" content="HayShop - Հայկական Խանութների Հարթակ">
+    <meta property="og:description" content="Գտեք և ավելացրեք հայկական բիզնես հայտարարություններ մեկ հարթակում։">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://armshop.store">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e293b">
+    <style>
+        :root {
+            --brand: #d97706;
+            --surface: #1e293b;
+            --surface-soft: #0f172a;
+            --background: #f1f5f9;
+            --foreground: #ffffff;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --border: #cbd5e1;
+            --shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--background) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><pattern id="classic-pattern" patternUnits="userSpaceOnUse" width="40" height="40"><rect width="40" height="40" fill="%23f1f5f9"/><path d="M0 40L40 0ZM40 40L0 0Z" stroke="%23cbd5e1" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23classic-pattern)"/></svg>');
+            background-attachment: fixed;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+        }
+        img { max-width: 100%; display: block; }
+        button, input, select, textarea { font: inherit; }
+        header {
+            background: var(--surface);
+            color: white;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: inset 0 -1px 0 rgba(255,255,255,0.08);
+        }
+        .brand {
+            margin: 0;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+        .nav-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn {
+            border: none;
+            border-radius: 999px;
+            padding: 12px 18px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            font-weight: 700;
+        }
+        .btn:hover { transform: translateY(-1px); }
+        .btn-primary { background: var(--brand); color: white; }
+        .btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.8); }
+        .btn-alert { background: #050000; color: white; }
+        main { flex: 1; }
+        .hero {
+            max-width: 1200px;
+            margin: 24px auto 0;
+            padding: 0 5%;
+        }
+        .hero-banner {
+            overflow: hidden;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
+            box-shadow: var(--shadow);
+            min-height: 180px;
+            display: grid;
+            place-items: center;
+            padding: 30px 24px;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255,215,120,0.14), transparent 32%), radial-gradient(circle at bottom right, rgba(34,197,94,0.12), transparent 28%);
+        }
+        .hero-banner-content {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 960px);
+        }
+        .hero-banner-heading {
+            margin: 0 0 14px;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: white;
+            letter-spacing: 0.08em;
+            line-height: 1.05;
+        }
+        .hero-banner-copy-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: min(100%, 860px);
+            margin: 0 auto;
+            padding: 18px 24px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 24px 68px rgba(0, 0, 0, 0.16);
+        }
+        .hero-banner-copy-wrapper::before,
+        .hero-banner-copy-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 88px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .hero-banner-copy-wrapper::before {
+            left: 0;
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.96), transparent);
+        }
+        .hero-banner-copy-wrapper::after {
+            right: 0;
+            background: linear-gradient(270deg, rgba(15, 23, 42, 0.96), transparent);
+        }
+        .hero-banner-copy-track {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 2.5rem;
+            animation: hero-copy-scroll 32s linear infinite;
+        }
+        .hero-banner-copy {
+            white-space: nowrap;
+            font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+            color: #f8fafc;
+            letter-spacing: 0.01em;
+            line-height: 1.7;
+            margin: 0;
+            z-index: 2;
+        }
+        @keyframes hero-copy-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .search-panel {
+            background: rgba(255,255,255,0.96);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 18px 22px;
+            margin: -20px auto 0;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+        .search-panel input,
+        .search-panel select {
+            flex: 1 1 220px;
+            min-width: 180px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            background: white;
+            color: var(--surface-soft);
+            outline: none;
+        }
+        .search-panel button { flex: 0 0 auto; }
+        .grid {
+            display: grid;
+            max-width: 1200px;
+            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 34px 5% 54px;
+        }
+        .qart {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .qart:hover { transform: translateY(-3px); }
+        .qart img { height: 190px; object-fit: cover; }
+        .qart-content { padding: 22px; }
+        .qart-content h3 { margin: 0 0 10px; font-size: 1.15rem; color: var(--surface-soft); }
+        .qart-content p { margin: 0 0 18px; line-height: 1.7; color: var(--text-secondary); }
+        .actions { display: grid; gap: 10px; }
+        .footer {
+            background: var(--surface);
+            color: white;
+            padding: 42px 5% 26px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        .footer-section h3 { margin-top: 0; font-size: 1.1rem; color: var(--brand); }
+        .footer-section p, .footer-section li { color: #cbd5e1; line-height: 1.75; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section li { margin-bottom: 10px; }
+        .footer-bottom { text-align: center; margin-top: 34px; color: #94a3b8; font-size: 0.95rem; }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.72);
+            backdrop-filter: blur(3px);
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 2000;
+        }
+        .modal.active { display: flex; }
+        .modal-body {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .modal-body h3 { margin-top: 0; font-size: 1.45rem; }
+        .modal-body .form-field { margin-bottom: 16px; }
+        .modal-body input,
+        .modal-body select,
+        .modal-body textarea {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 1rem;
+            color: var(--surface-soft);
+            background: #f8fafc;
+        }
+        .modal-body textarea { min-height: 120px; resize: vertical; }
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .modal-actions { display: grid; gap: 12px; margin-top: 16px; }
+        .chat-widget {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 10000;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+        .chat-toggle {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            border: none;
+            background: #e74c3c;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+        }
+        .chat-box {
+            width: 320px;
+            max-width: 92vw;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: none;
+        }
+        .chat-box.active { display: block; }
+        .chat-header {
+            background: var(--surface);
+            color: white;
+            padding: 14px 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .chat-body {
+            padding: 16px;
+            max-height: 260px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+        .chat-message { margin-bottom: 12px; line-height: 1.6; }
+        .chat-message.user { text-align: right; }
+        .chat-message.bot { text-align: left; }
+        .chat-footer {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            border-top: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+        .chat-footer input {
+            flex: 1;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 12px 14px;
+        }
+        .chat-footer button {
+            min-width: 54px;
+            border-radius: 50%;
+            padding: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--brand);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .admin-dashboard {
+            margin-top: 18px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+        .admin-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .admin-panel-title {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--surface-soft);
+        }
+        .admin-panel-subtitle {
+            margin: 6px 0 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .admin-info-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        .admin-pending-toolbar {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr auto;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .admin-pending-toolbar input,
+        .admin-pending-toolbar select {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 12px 14px;
+            background: #ffffff;
+            color: var(--surface-soft);
+        }
+        .admin-pending-toolbar button {
+            align-self: stretch;
+            white-space: nowrap;
+        }
+        .admin-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--surface-soft);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .admin-stat-card {
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            box-shadow: inset 0 0 0 rgba(255,255,255,0.75);
+        }
+        .admin-stat-card strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--surface-soft);
+            margin-bottom: 8px;
+        }
+        .admin-stat-card span {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .admin-pending-list {
+            display: grid;
+            gap: 14px;
+            max-height: 340px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .admin-pending-card {
+            display: grid;
+            gap: 12px;
+            background: white;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+        }
+        .admin-pending-card img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .admin-pending-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .admin-pending-card .card-header strong {
+            color: var(--surface-soft);
+            font-size: 1rem;
+        }
+        .admin-pending-card .card-header .card-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .admin-pending-card p.description {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+        .admin-pending-card .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .btn-sm {
+            padding: 10px 14px;
+            font-size: 0.95rem;
+        }
+        .btn-success {
+            background: #16a34a;
+            color: white;
+        }
+        .btn-success:hover,
+        .btn-alert:hover,
+        .btn-secondary:hover,
+        .btn-primary:hover {
+            opacity: 0.95;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--surface-soft);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .pagination button:hover,
+        .pagination button.active {
+            background: var(--brand);
+            color: white;
+        }
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .logout-btn {
+            display: none;
+            background: var(--danger);
+            color: white;
+        }
+        .logout-btn.show {
+            display: inline-block;
+        }
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            border-top-color: var(--brand);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .btn-loading {
+            position: relative;
+            color: transparent;
+        }
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @media (max-width: 900px) {
+            header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .search-panel { flex-direction: column; align-items: stretch; }
+        }
+        @media (max-width: 650px) {
+            .hero { margin-top: 18px; }
+            .slide-content { padding: 18px; }
+            .slide-title { font-size: 1.9rem; }
+            .chat-widget { right: 14px; bottom: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="brand" onclick="resetFilters()">HayShop</h1>
+        <div class="nav-btns">
+            <button type="button" class="btn btn-secondary" onclick="resetFilters()">Գլխավոր</button>
+            <button type="button" class="btn btn-primary" onclick="openModal('avelacmanModal')">+ Ավելացնել Հայտարարություն</button>
+            <button type="button" class="btn btn-alert logout-btn" id="logoutBtn" onclick="logoutAdmin()">Ելք</button>
+            <button type="button" class="btn btn-alert" onclick="openModal('adminModal')">Ադմին</button>
+        </div>
+    </header>
+    <main>
+        
+        <section class="search-panel" aria-label="Որոնման կառավարիչ">
+            <input id="searchInput" type="text" placeholder="Որոնել անունով կամ նկարագրությամբ..." aria-label="Որո՜նել անունով կամ նկարագրությամբ">
+            <select id="citySelect" aria-label="Ընտրել քաղաք">
+                <option value="">Բոլոր քաղաքները</option>
+                <option value="Երևան">Երևան</option>
+                <option value="Աբովյան">Աբովյան</option>
+                <option value="Ագարակ">Ագարակ</option>
+                <option value="Ալավերդի">Ալավերդի</option>
+                <option value="Ապարան">Ապարան</option>
+                <option value="Արարատ">Արարատ</option>
+                <option value="Արթիկ">Արթիկ</option>
+                <option value="Արմավիր">Արմավիր</option>
+                <option value="Արտաշատ">Արտաշատ</option>
+                <option value="Աշտարակ">Աշտարակ</option>
+                <option value="Բերդ">Բերդ</option>
+                <option value="Բյուրեղավան">Բյուրեղավան</option>
+                <option value="Գավառ">Գավառ</option>
+                <option value="Գյումրի">Գյումրի</option>
+                <option value="Գորիս">Գորիս</option>
+                <option value="Դաստակերտ">Դաստակերտ</option>
+                <option value="Դիլիջան">Դիլիջան</option>
+                <option value="Եղեգնաձոր">Եղեգնաձոր</option>
+                <option value="Եղվարդ">Եղվարդ</option>
+                <option value="Ճամբարակ">Ճամբարակ</option>
+                <option value="Մարալիկ">Մարալիկ</option>
+                <option value="Մարտունի">Մարտունի</option>
+                <option value="Մասիս">Մասիս</option>
+                <option value="Մեղրի">Մեղրի</option>
+                <option value="Մեծամոր">Մեծամոր</option>
+                <option value="Նոր Հաճն">Նոր Հաճն</option>
+                <option value="Նոյեմբերյան">Նոյեմբերյան</option>
+                <option value="Շամլուղ">Շամլուղ</option>
+                <option value="Չարենցավան">Չարենցավան</option>
+                <option value="Ջերմուկ">Ջերմուկ</option>
+                <option value="Սիսիան">Սիսիան</option>
+                <option value="Սպիտակ">Սպիտակ</option>
+                <option value="Ստեփանավան">Ստեփանավան</option>
+                <option value="Սևան">Սևան</option>
+                <option value="Վայք">Վայք</option>
+                <option value="Վանաձոր">Վանաձոր</option>
+                <option value="Վարդենիս">Վարդենիս</option>
+                <option value="Վեդի">Վեդի</option>
+                <option value="Տաշիր">Տաշիր</option>
+                <option value="Քաջարան">Քաջարան</option>
+            </select>
+            <button type="button" class="btn btn-primary" onclick="updateListings()">Որոնել</button>
+        </section>
+        <section class="grid" id="listingGrid" aria-live="polite">
+            <div id="loading" class="empty-state">Բեռնվում է...</div>
+        </section>
+        <div class="pagination" id="paginationControls"></div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HayShop Հարթակի Մասին</h3>
+                <p>HayShop-ը հայկական բիզնեսների և ծառայությունների գրացուցակ է, որը օգնում է հաճախորդներին արագ գտնել տեղական առաջարկները՝ պարզ և վստահելի միջավայրում։</p>
+            </div>
+            <div class="footer-section">
+                <h3>Մենք առաջարկում ենք</h3>
+                <ul>
+                    <li>Բիզնեսի լիարժեք ներկայացվածություն</li>
+                    <li>Այլընտրանքային որոնում ըստ քաղաքի</li>
+                    <li>Վաճառքի հայտերի արագ և պարզ կառավարման հնարավորություն</li>
+                    <li>Հեշտ կապ կայքի միջոցով</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ինչու ընտրել մեզ</h3>
+                <p>HayShop-ը մշակված է այնպիսի արագ ու սահուն փորձի համար, որը լավ է աշխատում ինչպես աշխատասեղանի, այնպես էլ բջջային սարքերի վրա. առանց ծանր հավելվածների կամ ապակու՝ ուղղակի տեղեկատվություն։</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 HayShop - Բոլոր իրավունքները պաշտպանված են</div>
+    </footer>
+    <div id="avelacmanModal" class="modal" aria-hidden="true">
+        <div class="modal-body">
+            <button class="modal-close" type="button" aria-label="Փակել" onclick="closeModal('avelacmanModal')">✕</button>
+            <h3>Ավելացնել հայտարարություն</h3>
+            <form id="avelacmanForm">
+                <div class="form-field">
+                    <input id="businessName" type="text" placeholder="Անվանում" required>
+                </div>
+                <div class="form-field">
+                    <label for="businessCity" class="sr-only">Քաղաք</label>
+                    <select id="businessCity" required>
+                        <option value="" disabled selected>Ընտրեք քաղաքը</option>
+                        <option value="Երևան">Երևան</option>
+                        <option value="Աբովյան">Աբովյան</option>
+                        <option value="Ագարակ">Ագարակ</option>
+                        <option value="Ալավերդի">Ալավերդի</option>
+                        <option value="Ապարան">Ապարան</option>
+                        <option value="Արարատ">Արարատ</option>
+                        <option value="Արթիկ">Արթիկ</option>
+                        <option value="Արմավիր">Արմավիր</option>
+                        <option value="Արտաշат">Արտաշատ</option>
+                        <option value="Աշտարակ">Աշտարակ</option>
+                        <option value="Բերդ">Բերդ</option>
+                        <option value="Բյուրեղավան">Բյուրեղավան</option>
+                        <option value="Գավառ">Գավառ</option>
+                        <option value="Գյումրի">Գյումրի</option>
+                        <option value="Գորիս">Գորիս</option>
+                        <option value="Դաստակերտ">Դաստակերտ</option>
+                        <option value="Դիլիջան">Դիլիջան</option>
+                        <option value="Եղեգնաձոր">Եղեգնաձոր</option>
+                        <option value="Եղվարդ">Եղվարդ</option>
+                        <option value="Ճամբարակ">Ճամբարակ</option>
+                        <option value="Մարալիկ">Մարալիկ</option>
+                        <option value="Մարտունի">Մարտունի</option>
+                        <option value="Մասիս">Մասիս</option>
+                        <option value="Մեղրի">Մեղրի</option>
+                        <option value="Մեծամոր">Մեծամոր</option>
+                        <option value="Նոր Հաճն">Նոր Հաճն</option>
+                        <option value="Նոյեմբերյան">Նոյեմբերյան</option>
+                        <option value="Շամլուղ">Շամլուղ</option>
+                        <option value="Չարենցավան">Չարենցավան</option>
+                        <option value="Ջերմուկ">Ջերմուկ</option>
+                        <option value="Սիսիան">Սիսիան</option>
+                        <option value="Սպիտակ">Սպիտակ</option>
+                        <option value="Ստեփանավան">Ստեփանավան</option>
+                        <option value="Սևան">Սևան</option>
+                        <option value="Վայք">Վայք</option>
+                        <option value="Վանաձոր">Վանաձոր</option>
+                        <option value="Վարդենիս">Վարդենիս</option>
+                        <option value="Վեդի">Վեդի</option>
+                        <option value="Տաշիր">Տաշիր</option>
+                        <option value="Քաջարան">Քաջարան</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <textarea id="businessDescription" placeholder="Նկարագրություն" required></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="businessLogo">Նկար</label>
+                    <input id="businessLogo" type="file" accept="image/*" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Ուղարկել հաստատման</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('avelacmanModal')">Փակել</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="adminModal" class="modal" aria-hidden="true">
+        <div class="modal-body">
+            <button class="modal-close" type="button" aria-label="Փակել" onclick="closeModal('adminModal')">✕</button>
+            <h3>Ադմին</h3>
+            <div id="adminLogin">
+                <div class="form-field">
+                    <input id="adminPassword" type="password" placeholder="Գաղտնաբառ" aria-label="Ադմին գաղտնաբառ">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-primary" onclick="authenticateAdmin()">Մուտք</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('adminModal')">Փակել</button>
+                </div>
+            </div>
+            <div id="adminDashboard" class="admin-dashboard hidden">
+                <div class="admin-panel-header">
+                    <div>
+                        <p class="admin-panel-title">Ադմին կառավարում</p>
+                        <p class="admin-panel-subtitle">Ահա սպասված հայտարարությունները։ Դուք կարող եք հաստատել կամ ջնջել դրանք արագ և անվտանգ։</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Ելք</button>
+                </div>
+                <div class="admin-info-bar">
+                    <span id="adminPendingCount" class="admin-pill">Բեռնում է...</span>
+                </div>
+                <div class="admin-pending-toolbar">
+                    <input id="adminPendingSearch" type="search" placeholder="Որոնել հայտի անունը կամ նկարագրությունը" aria-label="Որոնել pending հայտեր">
+                    <select id="adminPendingCity" aria-label="Ֆիլտր pending հայտերը քաղաքի համար">
+                        <option value="">Բոլոր քաղաքները</option>
+                        <option value="Երևան">Երևան</option>
+                        <option value="Գյումրի">Գյումրի</option>
+                        <option value="Վանաձոր">Վանաձոր</option>
+                        <option value="Արտաշատ">Արտաշատ</option>
+                        <option value="Մասիս">Մասիս</option>
+                        <option value="Սևան">Սևան</option>
+                    </select>
+                    <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել</button>
+                </div>
+                <div class="admin-stats">
+                    <div class="admin-stat-card">
+                        <strong id="adminTotalCount">-</strong>
+                        <span>Ընդհանուր հայտեր</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <strong id="adminApprovedCount">-</strong>
+                        <span>Հաստատված հայտեր</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <strong id="adminPendingSummary">-</strong>
+                        <span>Սպասող հայտեր</span>
+                    </div>
+                </div>
+                <h4>Սպասման տակ գտնվող հայտարարություններ</h4>
+                <div id="adminPendingList" class="admin-pending-list"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('adminModal')">Փակել</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="detailsModal" class="modal" aria-hidden="true">
+        <div class="modal-body" id="detailsContent"></div>
+    </div>
+    <div class="chat-widget">
+        <button type="button" class="chat-toggle" onclick="toggleChat()" aria-label="Բացեք աջակցությունը">💬</button>
+        <div id="chatBox" class="chat-box" aria-hidden="true">
+            <div class="chat-header">HayShop Օգնական</div>
+            <div class="chat-body" id="chatMessages">
+                <div class="chat-message bot"><strong>Բոտ:</strong> Ողջույն! Երջանիկ եմ օգնելու ձեզ։</div>
+            </div>
+            <div class="chat-footer">
+                <input id="chatInput" type="text" placeholder="Գրեք հայատառ..." aria-label="Ստացեք օգնականի պատասխան">
+                <button type="button" onclick="sendChat()" aria-label="Ուղարկել">➡️</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Supabase setup:
+        // 1. Create storage bucket: insert into storage.buckets (id, name, public) values ('advertisements', 'advertisements', true);
+        // 2. Create upload policy: create policy "Public upload advertisements" on storage.objects for insert to anon with check (bucket_id = 'advertisements');
+        // 3. Create read policy: create policy "Public read advertisements" on storage.objects for select to public using (bucket_id = 'advertisements');
+        // 4. Create database table: CREATE TABLE advertisements (id uuid DEFAULT gen_random_uuid() PRIMARY KEY, name text NOT NULL, city text NOT NULL, description text NOT NULL, logo_url text, approved boolean DEFAULT false, created_at timestamptz DEFAULT now());
+        // 5. Enable RLS and create policies for the table
+
+        const contactEmail = 'hayshop333@gmail.com';
+        const adminSecret = '123456789';
+
+        let listings = [];
+        let pendingItems = [];
+        let isAdmin = false;
+
+        const state = {
+            listingGrid: null,
+            searchInput: null,
+            citySelect: null,
+            adminPendingSearch: null,
+            adminPendingCity: null,
+            adminRefreshButton: null,
+            logoutBtn: null,
+            currentPage: 1,
+            itemsPerPage: 12
+        };
+
+        function showMessage(text) {
+            window.alert(text);
+        }
+
+        async function supabaseRequest(endpoint, { method = 'GET', body = null, headers = {}, params = {} } = {}) {
+            try {
+                const url = new URL(`https://rulyfpgjujoevvfuolml.supabase.co/rest/v1/${endpoint}`);
+                if (params.select) {
+                    url.searchParams.set('select', params.select);
+                }
+                if (params.order) {
+                    url.searchParams.set('order', params.order);
+                }
+                if (params.approved !== undefined) {
+                    url.searchParams.set('approved', params.approved ? 'eq.true' : 'eq.false');
+                }
+                if (params.id) {
+                    url.searchParams.set('id', `eq.${params.id}`);
+                }
+
+                const requestHeaders = {
+                    apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHlmcGdqdWpvZXZ2ZnVvbG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODE2MDUsImV4cCI6MjA5NDA1NzYwNX0._JoE2HYtZDxH8o9livkXS-DQAOLz1ea0qJ-XcGr0wlw',
+                    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHlmcGdqdWpvZXZ2ZnVvbG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODE2MDUsImV4cCI6MjA5NDA1NzYwNX0._JoE2HYtZDxH8o9livkXS-DQAOLz1ea0qJ-XcGr0wlw`,
+                    Accept: 'application/json',
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    ...headers
+                };
+
+                if (body) {
+                    requestHeaders['Content-Type'] = 'application/json';
+                }
+                if (['POST', 'PATCH', 'DELETE'].includes(method.toUpperCase())) {
+                    requestHeaders.Prefer = 'return=representation';
+                }
+
+                const response = await fetch(url.toString(), {
+                    method,
+                    headers: requestHeaders,
+                    body: body ? JSON.stringify(body) : null
+                });
+
+                const text = await response.text();
+                let data = null;
+                try {
+                    data = text ? JSON.parse(text) : null;
+                } catch (_error) {
+                    data = null;
+                }
+
+                if (!response.ok) {
+                    const message = data?.message || data?.error || text || response.statusText;
+                    const error = new Error(`Supabase request failed: ${response.status} ${response.statusText} - ${message}`);
+                    error.response = data;
+                    throw error;
+                }
+
+                return data;
+            } catch (error) {
+                console.error('Supabase request failed:', error);
+                throw error;
+            }
+        }
+
+        function normalizeListing(item) {
+            return {
+                id: item.id,
+                name: item.name || 'Անհայտ',
+                city: item.city || 'Առկա չէ',
+                description: item.description || 'Նկարագրություն չկա։',
+                logo: item.logo_url || 'https://via.placeholder.com/640x480?text=HayShop',
+                approved: Boolean(item.approved),
+                createdAt: item.created_at || ''
+            };
+        }
+
+        function createCard(item) {
+            const card = document.createElement('article');
+            card.className = 'qart';
+
+            const image = document.createElement('img');
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            image.src = item.logo;
+            image.alt = item.name;
+            card.appendChild(image);
+
+            const content = document.createElement('div');
+            content.className = 'qart-content';
+
+            const title = document.createElement('h3');
+            title.textContent = item.name;
+            content.appendChild(title);
+
+            const location = document.createElement('p');
+            location.textContent = `📍 ${item.city}`;
+            content.appendChild(location);
+
+            const actions = document.createElement('div');
+            actions.className = 'actions';
+
+            const detailsButton = document.createElement('button');
+            detailsButton.type = 'button';
+            detailsButton.className = 'btn btn-primary';
+            detailsButton.textContent = 'Տեսնել ավելին';
+            detailsButton.addEventListener('click', () => showDetails(item.id));
+            actions.appendChild(detailsButton);
+
+            if (isAdmin) {
+                const approveButton = document.createElement('button');
+                approveButton.type = 'button';
+                approveButton.className = 'btn btn-secondary';
+                approveButton.textContent = 'Հաստատել';
+                approveButton.addEventListener('click', () => approveItem(item.id));
+                actions.appendChild(approveButton);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.className = 'btn btn-alert';
+                deleteButton.textContent = 'Ջնջել';
+                deleteButton.addEventListener('click', () => deleteItem(item.id));
+                actions.appendChild(deleteButton);
+            }
+
+            content.appendChild(actions);
+            card.appendChild(content);
+            return card;
+        }
+
+        function renderListings(items, page = state.currentPage) {
+            if (!state.listingGrid) return;
+            state.listingGrid.innerHTML = '';
+
+            if (!items.length) {
+                const message = isAdmin
+                    ? 'Ոչ մի հայտարարություն չի գտնվել։ Փորձեք տարբեր հարցում կամ քաղաք։'
+                    : 'Տեղի չունի հայտարարություն։ Փորձեք ավելացնել հայտարարություն կամ սպասեք հաստատմանը։';
+                state.listingGrid.innerHTML = `<div class="empty-state">${message}</div>`;
+                renderPagination(0);
+                return;
+            }
+
+            const start = (page - 1) * state.itemsPerPage;
+            const end = start + state.itemsPerPage;
+            const pageItems = items.slice(start, end);
+
+            const fragment = document.createDocumentFragment();
+            pageItems.forEach(item => fragment.appendChild(createCard(item)));
+            state.listingGrid.appendChild(fragment);
+
+            renderPagination(items.length);
+        }
+
+        function renderPagination(totalItems) {
+            const paginationControls = document.getElementById('paginationControls');
+            if (!paginationControls) return;
+
+            const totalPages = Math.ceil(totalItems / state.itemsPerPage);
+            paginationControls.innerHTML = '';
+
+            if (totalPages <= 1) return;
+
+            const fragment = document.createDocumentFragment();
+
+            // Previous button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'pagination-btn';
+            prevBtn.textContent = 'Նախկին';
+            prevBtn.disabled = state.currentPage === 1;
+            prevBtn.onclick = () => changePage(state.currentPage - 1);
+            fragment.appendChild(prevBtn);
+
+            // Page numbers
+            const maxVisible = 5;
+            let startPage = Math.max(1, state.currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+            if (endPage - startPage + 1 < maxVisible) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = `pagination-btn ${i === state.currentPage ? 'active' : ''}`;
+                pageBtn.textContent = i;
+                pageBtn.onclick = () => changePage(i);
+                fragment.appendChild(pageBtn);
+            }
+
+            // Next button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'pagination-btn';
+            nextBtn.textContent = 'Հաջորդ';
+            nextBtn.disabled = state.currentPage === totalPages;
+            nextBtn.onclick = () => changePage(state.currentPage + 1);
+            fragment.appendChild(nextBtn);
+
+            paginationControls.appendChild(fragment);
+        }
+
+        function changePage(page) {
+            state.currentPage = page;
+            const visibleItems = getVisibleListings();
+            renderListings(visibleItems, page);
+        }
+
+        function getVisibleListings() {
+            const query = state.searchInput.value.trim().toLowerCase();
+            const selectedCity = state.citySelect.value;
+
+            return listings.filter(item => {
+                if (!isAdmin && !item.approved) return false;
+                if (selectedCity && item.city !== selectedCity) return false;
+                if (!query) return true;
+                return item.name.toLowerCase().includes(query) || item.description.toLowerCase().includes(query);
+            });
+        }
+
+        async function loadListings() {
+            if (!state.listingGrid) return;
+            state.listingGrid.innerHTML = '<div class="empty-state">Բեռնվում է...</div>';
+
+            try {
+                const data = await supabaseRequest('advertisements', {
+                    params: { select: 'id,name,city,description,logo_url,approved', order: 'approved.desc' }
+                });
+                listings = Array.isArray(data) ? data.map(normalizeListing) : [];
+                state.currentPage = 1;
+                renderListings(getVisibleListings());
+            } catch (error) {
+                console.error('Load listings failed:', error);
+                state.listingGrid.innerHTML = '<div class="empty-state">Տվյալները բեռնելու ընթացքում սխալ առաջացավ։</div>';
+            }
+        }
+
+        async function loadPendingAdmin() {
+            const pendingList = document.getElementById('adminPendingList');
+            if (!pendingList) return;
+            pendingList.innerHTML = '<div class="empty-state">Բեռնում է...</div>';
+
+            try {
+                const data = await supabaseRequest('advertisements', {
+                    params: { select: 'id,name,city,description,logo_url,approved', approved: false, order: 'id.desc' }
+                });
+                const items = Array.isArray(data) ? data.map(normalizeListing) : [];
+                pendingItems = items;
+                renderPendingAdmin(filterPendingAdmin());
+                updateAdminPendingCount(items.length);
+                updateAdminSummary(items);
+            } catch (error) {
+                console.error('Load pending admin failed:', error);
+                pendingList.innerHTML = '<div class="empty-state">Սխալ տեղի ունեցավ սպասման տակ գտնվող հայտարարությունները բեռնելիս։</div>';
+                pendingItems = [];
+                updateAdminPendingCount(0);
+                updateAdminSummary([]);
+            }
+        }
+
+        function updateAdminPendingCount(count) {
+            const badge = document.getElementById('adminPendingCount');
+            if (!badge) return;
+            badge.textContent = count ? `Սպասում է ${count} հայտ` : 'Ոչ մի հայտ չի սպասում';
+        }
+
+        function removePendingCard(id) {
+            const card = document.querySelector(`.admin-pending-card[data-id="${id}"]`);
+            if (card) card.remove();
+        }
+
+        function filterPendingAdmin() {
+            const searchValue = state.adminPendingSearch?.value.trim().toLowerCase() || '';
+            const selectedCity = state.adminPendingCity?.value || '';
+
+            return pendingItems.filter(item => {
+                if (selectedCity && item.city !== selectedCity) return false;
+                if (!searchValue) return true;
+                return item.name.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue);
+            });
+        }
+
+        function updateAdminSummary(pendingItems) {
+            const total = listings.length;
+            const approved = listings.filter(item => item.approved).length;
+            const pending = pendingItems.length;
+
+            const totalEl = document.getElementById('adminTotalCount');
+            const approvedEl = document.getElementById('adminApprovedCount');
+            const pendingEl = document.getElementById('adminPendingSummary');
+
+            if (totalEl) totalEl.textContent = `${total}`;
+            if (approvedEl) approvedEl.textContent = `${approved}`;
+            if (pendingEl) pendingEl.textContent = `${pending}`;
+        }
+
+        function renderPendingAdmin(items) {
+            const pendingList = document.getElementById('adminPendingList');
+            if (!pendingList) return;
+
+            pendingList.innerHTML = '';
+            if (!items.length) {
+                pendingList.innerHTML = '<div class="empty-state">Ոչ մի հայտ չի սպասում հաստատմանը։</div>';
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'admin-pending-card';
+                card.dataset.id = item.id;
+
+                if (item.logo) {
+                    const image = document.createElement('img');
+                    image.src = item.logo;
+                    image.alt = item.name;
+                    card.appendChild(image);
+                }
+
+                const header = document.createElement('div');
+                header.className = 'card-header';
+
+                const title = document.createElement('strong');
+                title.textContent = item.name;
+                header.appendChild(title);
+
+                const metaCity = document.createElement('span');
+                metaCity.className = 'card-meta';
+                metaCity.textContent = item.city;
+                header.appendChild(metaCity);
+
+                const metaDate = document.createElement('span');
+                metaDate.className = 'card-meta';
+                metaDate.textContent = item.createdAt ? new Date(item.createdAt).toLocaleDateString('hy-AM', {
+                    year: 'numeric', month: 'short', day: 'numeric'
+                }) : '';
+                header.appendChild(metaDate);
+
+                card.appendChild(header);
+
+                const description = document.createElement('p');
+                description.className = 'description';
+                description.textContent = item.description;
+                card.appendChild(description);
+
+                const actions = document.createElement('div');
+                actions.className = 'actions';
+
+                const approveButton = document.createElement('button');
+                approveButton.type = 'button';
+                approveButton.className = 'btn btn-success';
+                approveButton.textContent = 'Հաստատել';
+                approveButton.addEventListener('click', () => approveItem(item.id));
+                actions.appendChild(approveButton);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.className = 'btn btn-alert';
+                deleteButton.textContent = 'Ջնջել';
+                deleteButton.addEventListener('click', () => deleteItem(item.id));
+                actions.appendChild(deleteButton);
+
+                card.appendChild(actions);
+                fragment.appendChild(card);
+            });
+
+            pendingList.appendChild(fragment);
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+
+            if (id === 'adminModal') {
+                const login = document.getElementById('adminLogin');
+                const dashboard = document.getElementById('adminDashboard');
+                if (isAdmin) {
+                    if (login) login.classList.add('hidden');
+                    if (dashboard) dashboard.classList.remove('hidden');
+                    loadPendingAdmin();
+                } else {
+                    if (login) login.classList.remove('hidden');
+                    if (dashboard) dashboard.classList.add('hidden');
+                }
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal.active').forEach(modal => {
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden', 'true');
+            });
+        }
+
+        function resetFilters() {
+            if (!state.searchInput || !state.citySelect) return;
+            state.searchInput.value = '';
+            state.citySelect.value = '';
+            state.currentPage = 1;
+            renderListings(getVisibleListings());
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function authenticateAdmin() {
+            const passwordInput = document.getElementById('adminPassword');
+            if (!passwordInput) return;
+
+            if (passwordInput.value === adminSecret) {
+                isAdmin = true;
+                renderListings(getVisibleListings());
+                showMessage('Ադմին մուտքն ընդունված է։');
+
+                const login = document.getElementById('adminLogin');
+                const dashboard = document.getElementById('adminDashboard');
+                if (login) login.classList.add('hidden');
+                if (dashboard) dashboard.classList.remove('hidden');
+                if (state.logoutBtn) state.logoutBtn.style.display = 'inline-block';
+                loadPendingAdmin();
+            } else {
+                showMessage('Սխալ գաղտնաբառ։');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            renderListings(getVisibleListings());
+            closeModal('adminModal');
+            if (state.logoutBtn) state.logoutBtn.style.display = 'none';
+            showMessage('Ադմինից դուրս եկաք։');
+        }
+
+        function setFormState(form, isBusy) {
+            if (!form) return;
+            const button = form.querySelector('button[type="submit"]');
+            if (button) {
+                button.disabled = isBusy;
+                button.textContent = isBusy ? 'Բեռնվում է...' : 'Ուղարկել հաստատման';
+            }
+            form.style.opacity = isBusy ? '0.7' : '';
+            form.style.pointerEvents = isBusy ? 'none' : '';
+        }
+
+        function sanitizeInput(input) {
+            return input.trim().replace(/[<>]/g, '').substring(0, 1000);
+        }
+
+        async function fileToDataUrl(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = () => reject(new Error('Cannot read file'));
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function sanitizeFileName(name) {
+            return name
+                .replace(/[^a-zA-Z0-9\-_.]/g, '_')
+                .replace(/_+/g, '_')
+                .substring(0, 100);
+        }
+
+        function getStoragePublicUrl(path) {
+            return `${SUPABASE_STORAGE_URL}/object/public/${SUPABASE_STORAGE_BUCKET}/${encodeURIComponent(path)}`;
+        }
+
+        async function uploadFileToStorage(file) {
+            const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
+            const { data, error } = await supabase.storage
+                .from('advertisements')
+                .upload(fileName, file);
+
+            if (error) {
+                throw new Error(`Storage upload failed: ${error.message}`);
+            }
+
+            const { data: urlData } = supabase.storage
+                .from('advertisements')
+                .getPublicUrl(fileName);
+
+            return urlData.publicUrl;
+        }
+
+        async function submitAdvertisement(event) {
+            event.preventDefault();
+            const form = event.currentTarget;
+            if (!form) return;
+            setFormState(form, true);
+
+            try {
+                const name = sanitizeInput(document.getElementById('businessName')?.value || '');
+                const city = document.getElementById('businessCity')?.value || '';
+                const description = sanitizeInput(document.getElementById('businessDescription')?.value || '');
+                const logoFile = document.getElementById('businessLogo')?.files?.[0] || null;
+
+                const errors = [];
+                if (!name) errors.push('Անվանումը պարտադիր է։');
+                if (!city) errors.push('Քաղաքը պարտադիր է։');
+                if (!description) errors.push('Նկարագրությունը պարտադիր է։');
+                if (name.length > 100) errors.push('Անվանումը չպետք է գերազանցի 100 նիշը։');
+                if (description.length > 500) errors.push('Նկարագրությունը չպետք է գերազանցի 500 նիշը։');
+                if (!logoFile) {
+                    errors.push('Նկարը պարտադիր է։');
+                } else if (!logoFile.type.startsWith('image/')) {
+                    errors.push('Ընտրեք պատկերի ֆայլ։');
+                } else if (logoFile.size > 2 * 1024 * 1024 * 1024) {
+                    errors.push('Նկարը չպետք է գերազանցի 2GB։');
+                }
+
+                if (errors.length) {
+                    showMessage(`Խնդրում ենք ուղղել հետևյալ սխալները:\n${errors.join('\n')}`);
+                    return;
+                }
+
+                const logoUrl = await uploadFileToStorage(logoFile);
+                const newListing = {
+                    name,
+                    city,
+                    description,
+                    logo_url: logoUrl,
+                    approved: false
+                };
+
+                const response = await supabaseRequest('advertisements', {
+                    method: 'POST',
+                    body: newListing
+                });
+
+                const created = Array.isArray(response) ? response[0] : response;
+                if (!created?.id) {
+                    throw new Error('Failed to create listing.');
+                }
+
+                showMessage('Հայտարարությունը հաջողությամբ ուղարկվեց հաստատման։');
+                form.reset();
+                closeModal('avelacmanModal');
+                await loadListings();
+            } catch (error) {
+                console.error('Submit advertisement failed:', error);
+                showMessage(`✗ Սխալ տեղի ունեցավ հայտարարություն ուղարկելիս: ${error.message}`);
+            } finally {
+                setFormState(form, false);
+            }
+        }
+
+        async function approveItem(id) {
+            const confirmApprove = window.confirm(`Հաստատե՞լ այս հայտարարությունը։\nID: ${id}`);
+            if (!confirmApprove) return;
+
+            try {
+                await supabaseRequest('advertisements', {
+                    method: 'PATCH',
+                    body: { approved: true },
+                    params: { id: id }
+                });
+
+                showMessage('✓ Հայտարարությունը հաջողությամբ հաստատվեց։');
+                if (isAdmin) removePendingCard(id);
+                await loadListings();
+                if (isAdmin) await loadPendingAdmin();
+            } catch (error) {
+                console.error('Approve failed:', error);
+                showMessage(`✗ Հաստատման սխալ: ${error.message}`);
+            }
+        }
+
+        async function deleteItem(id) {
+            const confirmDelete = window.confirm(`Ջնջե՞լ այս հայտարարությունը՝ ընդմիշտ:\nID: ${id}`);
+            if (!confirmDelete) return;
+
+            try {
+                await supabaseRequest('advertisements', {
+                    method: 'DELETE',
+                    params: { id: id }
+                });
+
+                showMessage('✓ Հայտարարությունը հաջողությամբ ջնջվեց։');
+                if (isAdmin) removePendingCard(id);
+                await loadListings();
+                if (isAdmin) await loadPendingAdmin();
+            } catch (error) {
+                console.error('Delete failed:', error);
+                showMessage(`✗ Ջնջման սխալ: ${error.message}`);
+            }
+        }
+
+        function showDetails(id) {
+            const item = listings.find(entry => entry.id === id);
+            if (!item) return;
+            const detailsContent = document.getElementById('detailsContent');
+            if (!detailsContent) return;
+            detailsContent.innerHTML = '';
+
+            const closeButton = document.createElement('button');
+            closeButton.className = 'modal-close';
+            closeButton.type = 'button';
+            closeButton.setAttribute('aria-label', 'Փակել');
+            closeButton.textContent = '✕';
+            closeButton.addEventListener('click', () => closeModal('detailsModal'));
+            detailsContent.appendChild(closeButton);
+
+            const title = document.createElement('h3');
+            title.textContent = item.name;
+            detailsContent.appendChild(title);
+
+            const description = document.createElement('p');
+            description.textContent = item.description;
+            detailsContent.appendChild(description);
+
+            const image = document.createElement('img');
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            image.src = item.logo;
+            image.alt = item.name;
+            image.style.borderRadius = '18px';
+            image.style.marginTop = '18px';
+            detailsContent.appendChild(image);
+
+            const actions = document.createElement('div');
+            actions.className = 'modal-actions';
+            const closeAction = document.createElement('button');
+            closeAction.type = 'button';
+            closeAction.className = 'btn btn-secondary';
+            closeAction.textContent = 'Փակել';
+            closeAction.addEventListener('click', () => closeModal('detailsModal'));
+            actions.appendChild(closeAction);
+            detailsContent.appendChild(actions);
+
+            openModal('detailsModal');
+        }
+
+        function addChatMessage(html, sender) {
+            const messages = document.getElementById('chatMessages');
+            if (!messages) return;
+            const message = document.createElement('div');
+            message.className = `chat-message ${sender}`;
+            message.innerHTML = html;
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function sendChat() {
+            const input = document.getElementById('chatInput');
+            if (!input) return;
+            const value = input.value.trim();
+            if (!value) return;
+
+            const validText = /^[ա-ֆԱ-Ֆ0-9\s.,?!։՝«»()]+$/.test(value);
+            if (!validText) {
+                addChatMessage('<strong>⚠️ Բոտ:</strong> Խնդրում ենք գրել միայն հայատառ։', 'bot');
+                input.value = '';
+                return;
+            }
+
+            addChatMessage(value, 'user');
+            input.value = '';
+
+            const lower = value.toLowerCase();
+            let response = 'Ներողություն, չհասկացա հարցը։ Գրեք պարզ կամ ուղարկեք էլ. փոստով՝ ' + contactEmail + '.';
+
+            if (lower.includes('բիզնես') || lower.includes('գրանց')) {
+                response = 'Բիզնեսի գրանցման հարցերի համար գրեք՝ ' + contactEmail + '.';
+            } else if (lower.includes('գովազդ') || lower.includes('vip')) {
+                response = 'Գովազդի պայմանների համար գրեք՝ ' + contactEmail + '.';
+            } else if (lower.includes('ավել') || lower.includes('տեղադր')) {
+                response = 'Սեղմեք «Ավելացնել հայտարարություն» և լրացրեք բոլոր դաշտերը։';
+            } else if (lower.includes('ջնջ') || lower.includes('հեռաց')) {
+                response = 'Այս պահին հայտը ջնջելու համար գրեք մեզ՝ ' + contactEmail + '.';
+            } else if (lower.includes('բարև') || lower.includes('ողջույն')) {
+                response = 'Բարև, ինչով կարող ենք օգնել ձեզ այսօր։';
+            }
+
+            setTimeout(() => addChatMessage(`<strong>Բոտ:</strong> ${response}`, 'bot'), 450);
+        }
+
+        function updateListings() {
+            state.currentPage = 1;
+            renderListings(getVisibleListings());
+        }
+
+        function initialize() {
+            state.listingGrid = document.getElementById('listingGrid');
+            state.searchInput = document.getElementById('searchInput');
+            state.citySelect = document.getElementById('citySelect');
+            state.adminPendingSearch = document.getElementById('adminPendingSearch');
+            state.adminPendingCity = document.getElementById('adminPendingCity');
+            state.adminRefreshButton = document.getElementById('adminPendingRefresh');
+            state.logoutBtn = document.getElementById('logoutBtn');
+
+            if (state.logoutBtn) state.logoutBtn.style.display = 'none';
+
+            const form = document.getElementById('avelacmanForm');
+            if (form) {
+                form.addEventListener('submit', submitAdvertisement);
+            }
+
+            if (state.searchInput) {
+                state.searchInput.addEventListener('input', updateListings);
+            }
+            if (state.citySelect) {
+                state.citySelect.addEventListener('change', updateListings);
+            }
+            if (state.adminPendingSearch) {
+                state.adminPendingSearch.addEventListener('input', () => renderPendingAdmin(filterPendingAdmin()));
+            }
+            if (state.adminPendingCity) {
+                state.adminPendingCity.addEventListener('change', () => renderPendingAdmin(filterPendingAdmin()));
+            }
+            if (state.adminRefreshButton) {
+                state.adminRefreshButton.addEventListener('click', loadPendingAdmin);
+            }
+
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', event => {
+                    if (event.target === modal) closeModal(modal.id);
+                });
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') closeAllModals();
+            });
+
+            const chatToggle = document.querySelector('.chat-toggle');
+            if (chatToggle) {
+                chatToggle.addEventListener('click', () => {
+                    const box = document.getElementById('chatBox');
+                    if (!box) return;
+                    const active = box.classList.toggle('active');
+                    box.setAttribute('aria-hidden', String(!active));
+                });
+            }
+
+            const chatButton = document.querySelector('.chat-footer button');
+            if (chatButton) chatButton.addEventListener('click', sendChat);
+
+            const chatInput = document.getElementById('chatInput');
+            if (chatInput) {
+                chatInput.addEventListener('keydown', event => {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        sendChat();
+                    }
+                });
+            }
+
+            loadListings();
+        }
+
+        document.addEventListener('DOMContentLoaded', initialize);
+
+        window.addEventListener('error', event => {
+            console.error('Window error:', event.message, event.filename, event.lineno, event.colno, event.error);
+        });
+
+        window.addEventListener('unhandledrejection', event => {
+            console.error('Unhandled rejection:', event.reason);
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
+    </script>
+</body>
+</html>
