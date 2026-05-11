@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hy">
 <head>
     <meta charset="UTF-8">
@@ -1296,6 +1296,9 @@
             });
         }
 
+        const SUPABASE_STORAGE_URL = 'https://rulyfpgjujoevvfuolml.supabase.co/storage/v1';
+        const SUPABASE_STORAGE_BUCKET = 'advertisements';
+
         function sanitizeFileName(name) {
             return name
                 .replace(/[^a-zA-Z0-9\-_.]/g, '_')
@@ -1309,19 +1312,24 @@
 
         async function uploadFileToStorage(file) {
             const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
-            const { data, error } = await supabase.storage
-                .from('advertisements')
-                .upload(fileName, file);
+            const uploadUrl = `${SUPABASE_STORAGE_URL}/object/${SUPABASE_STORAGE_BUCKET}/${encodeURIComponent(fileName)}`;
 
-            if (error) {
-                throw new Error(`Storage upload failed: ${error.message}`);
+            const response = await fetch(uploadUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHlmcGdqdWpvZXZ2ZnVvbG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODE2MDUsImV4cCI6MjA5NDA1NzYwNX0._JoE2HYtZDxH8o9livkXS-DQAOLz1ea0qJ-XcGr0wlw`,
+                    'Content-Type': file.type,
+                    'Cache-Control': 'no-cache'
+                },
+                body: file
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Storage upload failed: ${response.status} ${response.statusText} - ${errorText}`);
             }
 
-            const { data: urlData } = supabase.storage
-                .from('advertisements')
-                .getPublicUrl(fileName);
-
-            return urlData.publicUrl;
+            return getStoragePublicUrl(fileName);
         }
 
         async function submitAdvertisement(event) {
