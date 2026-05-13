@@ -1527,6 +1527,13 @@
             setTimeout(() => addChatMessage(`<strong>Բոտ:</strong> ${response}`, 'bot'), 450);
         }
 
+        function toggleChat() {
+            const box = document.getElementById('chatBox');
+            if (!box) return;
+            const active = box.classList.toggle('active');
+            box.setAttribute('aria-hidden', String(!active));
+        }
+
         function updateListings() {
             state.currentPage = 1;
             renderListings(getVisibleListings());
