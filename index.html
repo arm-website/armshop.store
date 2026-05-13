@@ -215,6 +215,19 @@
         .qart img { height: 190px; object-fit: cover; }
         .qart-content { padding: 22px; }
         .qart-content h3 { margin: 0 0 10px; font-size: 1.15rem; color: var(--surface-soft); }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(251, 191, 36, 0.16);
+            color: #92400e;
+            border: 1px solid rgba(251, 191, 36, 0.32);
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
         .qart-content p { margin: 0 0 18px; line-height: 1.7; color: var(--text-secondary); }
         .actions { display: grid; gap: 10px; }
         .footer {
@@ -640,6 +653,47 @@
             </select>
             <button type="button" class="btn btn-primary" onclick="updateListings()">Որոնել</button>
         </section>
+        <section id="adminPanelSection" class="admin-dashboard hidden" aria-label="Ադմին վահանակ">
+            <div class="admin-panel-header">
+                <div>
+                    <p class="admin-panel-title">Ադմին վահանակ</p>
+                    <p class="admin-panel-subtitle">Գրանցեք, հաստատեք և ջնջեք հայտարարությունները արագ ու անվտանգ մեկ վայրում։</p>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Ելք</button>
+            </div>
+            <div class="admin-info-bar">
+                <span id="adminPendingCount" class="admin-pill">Բեռնում է...</span>
+            </div>
+            <div class="admin-pending-toolbar">
+                <input id="adminPendingSearch" type="search" placeholder="Որոնել դրա անունը կամ նկարագրությունը" aria-label="Որոնել pending հայտարարությունները">
+                <select id="adminPendingCity" aria-label="Ֆիլտր pending հայտերը քաղաքի համար">
+                    <option value="">Բոլոր քաղաքները</option>
+                    <option value="Երևան">Երևան</option>
+                    <option value="Գյումրի">Գյումրի</option>
+                    <option value="Վանաձոր">Վանաձոր</option>
+                    <option value="Արտաշատ">Արտաշատ</option>
+                    <option value="Մասիս">Մասիս</option>
+                    <option value="Սևան">Սևան</option>
+                </select>
+                <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել</button>
+            </div>
+            <div class="admin-stats">
+                <div class="admin-stat-card">
+                    <strong id="adminTotalCount">-</strong>
+                    <span>Ընդհանուր հայտեր</span>
+                </div>
+                <div class="admin-stat-card">
+                    <strong id="adminApprovedCount">-</strong>
+                    <span>Հաստատված հայտեր</span>
+                </div>
+                <div class="admin-stat-card">
+                    <strong id="adminPendingSummary">-</strong>
+                    <span>Սպասող հայտեր</span>
+                </div>
+            </div>
+            <h4>Սպասման տակ գտնվող հայտարարություններ</h4>
+            <div id="adminPendingList" class="admin-pending-list"></div>
+        </section>
         <section class="grid" id="listingGrid" aria-live="polite">
             <div id="loading" class="empty-state">Բեռնվում է...</div>
         </section>
@@ -739,56 +793,13 @@
         <div class="modal-body">
             <button class="modal-close" type="button" aria-label="Փակել" onclick="closeModal('adminModal')">✕</button>
             <h3>Ադմին</h3>
+            <p style="margin:0 0 18px; color:#475569;">Մուտք գործեք ադմին վահանակի միջոցով՝ հրապարակումներ հաստատելու և կառավարելու համար։</p>
             <div id="adminLogin">
                 <div class="form-field">
                     <input id="adminPassword" type="password" placeholder="Գաղտնաբառ" aria-label="Ադմին գաղտնաբառ">
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn btn-primary" onclick="authenticateAdmin()">Մուտք</button>
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('adminModal')">Փակել</button>
-                </div>
-            </div>
-            <div id="adminDashboard" class="admin-dashboard hidden">
-                <div class="admin-panel-header">
-                    <div>
-                        <p class="admin-panel-title">Ադմին կառավարում</p>
-                        <p class="admin-panel-subtitle">Ահա սպասված հայտարարությունները։ Դուք կարող եք հաստատել կամ ջնջել դրանք արագ և անվտանգ։</p>
-                    </div>
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Ելք</button>
-                </div>
-                <div class="admin-info-bar">
-                    <span id="adminPendingCount" class="admin-pill">Բեռնում է...</span>
-                </div>
-                <div class="admin-pending-toolbar">
-                    <input id="adminPendingSearch" type="search" placeholder="Որոնել հայտի անունը կամ նկարագրությունը" aria-label="Որոնել pending հայտեր">
-                    <select id="adminPendingCity" aria-label="Ֆիլտր pending հայտերը քաղաքի համար">
-                        <option value="">Բոլոր քաղաքները</option>
-                        <option value="Երևան">Երևան</option>
-                        <option value="Գյումրի">Գյումրի</option>
-                        <option value="Վանաձոր">Վանաձոր</option>
-                        <option value="Արտաշատ">Արտաշատ</option>
-                        <option value="Մասիս">Մասիս</option>
-                        <option value="Սևան">Սևան</option>
-                    </select>
-                    <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել</button>
-                </div>
-                <div class="admin-stats">
-                    <div class="admin-stat-card">
-                        <strong id="adminTotalCount">-</strong>
-                        <span>Ընդհանուր հայտեր</span>
-                    </div>
-                    <div class="admin-stat-card">
-                        <strong id="adminApprovedCount">-</strong>
-                        <span>Հաստատված հայտեր</span>
-                    </div>
-                    <div class="admin-stat-card">
-                        <strong id="adminPendingSummary">-</strong>
-                        <span>Սպասող հայտեր</span>
-                    </div>
-                </div>
-                <h4>Սպասման տակ գտնվող հայտարարություններ</h4>
-                <div id="adminPendingList" class="admin-pending-list"></div>
-                <div class="modal-actions">
                     <button type="button" class="btn btn-secondary" onclick="closeModal('adminModal')">Փակել</button>
                 </div>
             </div>
@@ -832,6 +843,7 @@
             adminPendingSearch: null,
             adminPendingCity: null,
             adminRefreshButton: null,
+            adminPanelSection: null,
             logoutBtn: null,
             currentPage: 1,
             itemsPerPage: 12
@@ -930,6 +942,13 @@
             const title = document.createElement('h3');
             title.textContent = item.name;
             content.appendChild(title);
+
+            if (!item.approved) {
+                const statusBadge = document.createElement('span');
+                statusBadge.className = 'status-pill';
+                statusBadge.textContent = 'Սպասում է հաստատմանը';
+                content.appendChild(statusBadge);
+            }
 
             const location = document.createElement('p');
             location.textContent = `📍 ${item.city}`;
@@ -1207,21 +1226,12 @@
         function openModal(id) {
             const modal = document.getElementById(id);
             if (!modal) return;
+            if (id === 'adminModal' && isAdmin) {
+                showMessage('Դուք արդեն ադմին ձևաչափում եք. ադմին վահանակը տեսանելի է էջում։');
+                return;
+            }
             modal.classList.add('active');
             modal.setAttribute('aria-hidden', 'false');
-
-            if (id === 'adminModal') {
-                const login = document.getElementById('adminLogin');
-                const dashboard = document.getElementById('adminDashboard');
-                if (isAdmin) {
-                    if (login) login.classList.add('hidden');
-                    if (dashboard) dashboard.classList.remove('hidden');
-                    loadPendingAdmin();
-                } else {
-                    if (login) login.classList.remove('hidden');
-                    if (dashboard) dashboard.classList.add('hidden');
-                }
-            }
         }
 
         function closeModal(id) {
@@ -1253,14 +1263,12 @@
 
             if (passwordInput.value === adminSecret) {
                 isAdmin = true;
+                passwordInput.value = '';
                 renderListings(getVisibleListings());
-                showMessage('Ադմին մուտքն ընդունված է։');
-
-                const login = document.getElementById('adminLogin');
-                const dashboard = document.getElementById('adminDashboard');
-                if (login) login.classList.add('hidden');
-                if (dashboard) dashboard.classList.remove('hidden');
+                showAdminPanel();
                 if (state.logoutBtn) state.logoutBtn.style.display = 'inline-block';
+                closeModal('adminModal');
+                showMessage('Ադմին մուտքն ընդունված է։');
                 loadPendingAdmin();
             } else {
                 showMessage('Սխալ գաղտնաբառ։');
@@ -1271,8 +1279,21 @@
             isAdmin = false;
             renderListings(getVisibleListings());
             closeModal('adminModal');
+            hideAdminPanel();
             if (state.logoutBtn) state.logoutBtn.style.display = 'none';
             showMessage('Ադմինից դուրս եկաք։');
+        }
+
+        function showAdminPanel() {
+            const panel = document.getElementById('adminPanelSection');
+            if (!panel) return;
+            panel.classList.remove('hidden');
+        }
+
+        function hideAdminPanel() {
+            const panel = document.getElementById('adminPanelSection');
+            if (!panel) return;
+            panel.classList.add('hidden');
         }
 
         function setFormState(form, isBusy) {
@@ -1546,9 +1567,11 @@
             state.adminPendingSearch = document.getElementById('adminPendingSearch');
             state.adminPendingCity = document.getElementById('adminPendingCity');
             state.adminRefreshButton = document.getElementById('adminPendingRefresh');
+            state.adminPanelSection = document.getElementById('adminPanelSection');
             state.logoutBtn = document.getElementById('logoutBtn');
 
             if (state.logoutBtn) state.logoutBtn.style.display = 'none';
+            if (state.adminPanelSection) state.adminPanelSection.classList.add('hidden');
 
             const form = document.getElementById('avelacmanForm');
             if (form) {
