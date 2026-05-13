@@ -366,32 +366,48 @@
             cursor: pointer;
         }
         .admin-dashboard {
-            margin-top: 18px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid rgba(148, 163, 184, 0.28);
-            padding: 22px;
-            box-shadow: var(--shadow);
+            margin-top: 24px;
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.97);
+            border: 1px solid rgba(148, 163, 184, 0.30);
+            padding: 28px;
+            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .admin-panel-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 18px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
         .admin-panel-title {
             margin: 0;
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.35rem;
+            font-weight: 800;
             color: var(--surface-soft);
         }
         .admin-panel-subtitle {
-            margin: 6px 0 0;
-            font-size: 0.95rem;
+            margin: 8px 0 0;
+            font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 1.55;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+        .admin-panel-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .admin-action-note {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
         .admin-info-bar {
             display: flex;
@@ -403,16 +419,23 @@
             display: grid;
             grid-template-columns: 1.5fr 1fr auto;
             gap: 12px;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
         }
         .admin-pending-toolbar input,
         .admin-pending-toolbar select {
             width: 100%;
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 12px 14px;
+            padding: 14px 16px;
             background: #ffffff;
             color: var(--surface-soft);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .admin-pending-toolbar input:focus,
+        .admin-pending-toolbar select:focus {
+            outline: none;
+            border-color: var(--brand);
+            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.12);
         }
         .admin-pending-toolbar button {
             align-self: stretch;
@@ -422,40 +445,56 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 14px;
+            padding: 10px 16px;
             border-radius: 999px;
             background: rgba(34, 197, 94, 0.12);
             color: var(--surface-soft);
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
         }
         .admin-stats {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
-            margin-bottom: 18px;
+            margin-bottom: 28px;
         }
         .admin-stat-card {
-            padding: 18px;
+            padding: 22px;
             background: #f8fafc;
-            border-radius: 20px;
+            border-radius: 22px;
             border: 1px solid rgba(148, 163, 184, 0.18);
             box-shadow: inset 0 0 0 rgba(255,255,255,0.75);
         }
         .admin-stat-card strong {
             display: block;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--surface-soft);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .admin-stat-card span {
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
+        .admin-section-title {
+            margin: 0 0 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--surface-soft);
+        }
+        .admin-announcement-create {
+            background: #f8fafc;
+            padding: 22px;
+            border-radius: 22px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+        }
+        .admin-announcement-create .form-field {
+            margin-bottom: 16px;
+        }
         .admin-pending-list {
             display: grid;
             gap: 14px;
-            max-height: 340px;
+            max-height: 360px;
             overflow-y: auto;
             padding-right: 4px;
         }
@@ -465,12 +504,12 @@
             background: white;
             border: 1px solid rgba(148, 163, 184, 0.25);
             border-radius: 20px;
-            padding: 18px;
-            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+            padding: 20px;
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.06);
         }
         .admin-pending-card img {
             width: 100%;
-            max-height: 180px;
+            max-height: 200px;
             object-fit: cover;
             border-radius: 16px;
         }
@@ -478,7 +517,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
         .admin-pending-card .card-header strong {
@@ -500,6 +539,9 @@
             gap: 10px;
             flex-wrap: wrap;
             justify-content: flex-end;
+        }
+        .admin-pending-card .actions .btn {
+            min-width: 100px;
         }
         .btn-sm {
             padding: 10px 14px;
@@ -524,6 +566,15 @@
             gap: 8px;
             margin-top: 24px;
             flex-wrap: wrap;
+        }
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--surface-soft);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
         .pagination button {
             padding: 8px 12px;
@@ -665,11 +716,15 @@
                 </div>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Ելք</button>
             </div>
+            <div class="admin-panel-actions">
+                <span class="admin-action-note">Համակարգը հետևում է հայտերի կարգավիճակին. ֆիլտրեք, հաստատեք կամ ջնջեք անմիջապես այս վահանակից։</span>
+                <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել տվյալները</button>
+            </div>
             <div class="admin-info-bar">
                 <span id="adminPendingCount" class="admin-pill">Բեռնում է...</span>
             </div>
             <div class="admin-pending-toolbar">
-                <input id="adminPendingSearch" type="search" placeholder="Որոնել դրա անունը կամ նկարագրությունը" aria-label="Որոնել pending հայտարարությունները">
+                <input id="adminPendingSearch" type="search" placeholder="Որոնել անունով կամ նկարագրությամբ" aria-label="Որոնել pending հայտարարությունները">
                 <select id="adminPendingCity" aria-label="Ֆիլտր pending հայտերը քաղաքի համար">
                     <option value="">Բոլոր քաղաքները</option>
                     <option value="Երևան">Երևան</option>
@@ -679,7 +734,7 @@
                     <option value="Մասիս">Մասիս</option>
                     <option value="Սևան">Սևան</option>
                 </select>
-                <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել</button>
+                <button type="button" class="btn btn-secondary btn-sm">Դիտել Ենթադրվող</button>
             </div>
             <div class="admin-stats">
                 <div class="admin-stat-card">
@@ -695,23 +750,23 @@
                     <span>Սպասող հայտեր</span>
                 </div>
             </div>
-            <h4>Սպասման տակ գտնվող հայտարարություններ</h4>
+            <h4 class="admin-section-title">Սպասման տակ գտնվող հայտեր</h4>
             <div id="adminPendingList" class="admin-pending-list"></div>
             
             <hr style="margin: 28px 0; border: none; border-top: 1px solid #e2e8f0;">
             
-            <h4>Հայտարարություններ (Announcements)</h4>
-            <div style="background: #f8fafc; padding: 18px; border-radius: 16px; margin-bottom: 18px;">
-                <div class="form-field" style="margin-bottom: 12px;">
-                    <input id="announcementTitle" type="text" placeholder="Հայտարարության վերտitel" aria-label="Հայտարարության վերտիտղ">
+            <h4 class="admin-section-title">Հայտարարություններ</h4>
+            <div class="admin-announcement-create">
+                <div class="form-field">
+                    <input id="announcementTitle" type="text" placeholder="Հայտարարության վերնագիր" aria-label="Հայտարարության վերնագիր">
                 </div>
-                <div class="form-field" style="margin-bottom: 12px;">
-                    <textarea id="announcementContent" placeholder="Հայտարարության բովանդակություն" aria-label="Հայտարարության բովանդակություն" style="min-height: 80px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 1rem;"></textarea>
+                <div class="form-field">
+                    <textarea id="announcementContent" placeholder="Հայտարարության բովանդակություն" aria-label="Հայտարարության բովանդակություն"></textarea>
                 </div>
                 <button type="button" class="btn btn-primary" onclick="createAnnouncement()">Ստեղծել Հայտարարություն</button>
             </div>
             
-            <h4>Ակտիվ Հայտարարություններ</h4>
+            <h4 class="admin-section-title">Ակտիվ Հայտարարություններ</h4>
             <div id="adminAnnouncementsList" class="admin-pending-list"></div>
         </section>
         <section class="grid" id="listingGrid" aria-live="polite">
