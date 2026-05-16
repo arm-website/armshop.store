@@ -215,19 +215,6 @@
         .qart img { height: 190px; object-fit: cover; }
         .qart-content { padding: 22px; }
         .qart-content h3 { margin: 0 0 10px; font-size: 1.15rem; color: var(--surface-soft); }
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            background: rgba(251, 191, 36, 0.16);
-            color: #92400e;
-            border: 1px solid rgba(251, 191, 36, 0.32);
-            margin-bottom: 12px;
-            font-size: 0.92rem;
-            font-weight: 600;
-        }
         .qart-content p { margin: 0 0 18px; line-height: 1.7; color: var(--text-secondary); }
         .actions { display: grid; gap: 10px; }
         .footer {
@@ -366,48 +353,32 @@
             cursor: pointer;
         }
         .admin-dashboard {
-            margin-top: 24px;
-            border-radius: 26px;
-            background: rgba(255, 255, 255, 0.97);
-            border: 1px solid rgba(148, 163, 184, 0.30);
-            padding: 28px;
-            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 18px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            padding: 22px;
+            box-shadow: var(--shadow);
         }
         .admin-panel-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
         .admin-panel-title {
             margin: 0;
-            font-size: 1.35rem;
-            font-weight: 800;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--surface-soft);
         }
         .admin-panel-subtitle {
-            margin: 8px 0 0;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 700px;
-        }
-        .admin-panel-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .admin-action-note {
-            color: var(--text-secondary);
+            margin: 6px 0 0;
             font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
         }
         .admin-info-bar {
             display: flex;
@@ -419,23 +390,16 @@
             display: grid;
             grid-template-columns: 1.5fr 1fr auto;
             gap: 12px;
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
         .admin-pending-toolbar input,
         .admin-pending-toolbar select {
             width: 100%;
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 14px 16px;
+            padding: 12px 14px;
             background: #ffffff;
             color: var(--surface-soft);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .admin-pending-toolbar input:focus,
-        .admin-pending-toolbar select:focus {
-            outline: none;
-            border-color: var(--brand);
-            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.12);
         }
         .admin-pending-toolbar button {
             align-self: stretch;
@@ -445,56 +409,40 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
+            padding: 10px 14px;
             border-radius: 999px;
             background: rgba(34, 197, 94, 0.12);
             color: var(--surface-soft);
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 600;
         }
         .admin-stats {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
-            margin-bottom: 28px;
+            margin-bottom: 18px;
         }
         .admin-stat-card {
-            padding: 22px;
+            padding: 18px;
             background: #f8fafc;
-            border-radius: 22px;
+            border-radius: 20px;
             border: 1px solid rgba(148, 163, 184, 0.18);
             box-shadow: inset 0 0 0 rgba(255,255,255,0.75);
         }
         .admin-stat-card strong {
             display: block;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--surface-soft);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .admin-stat-card span {
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
-        .admin-section-title {
-            margin: 0 0 14px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--surface-soft);
-        }
-        .admin-announcement-create {
-            background: #f8fafc;
-            padding: 22px;
-            border-radius: 22px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(148, 163, 184, 0.18);
-        }
-        .admin-announcement-create .form-field {
-            margin-bottom: 16px;
-        }
         .admin-pending-list {
             display: grid;
             gap: 14px;
-            max-height: 360px;
+            max-height: 340px;
             overflow-y: auto;
             padding-right: 4px;
         }
@@ -504,12 +452,12 @@
             background: white;
             border: 1px solid rgba(148, 163, 184, 0.25);
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.06);
+            padding: 18px;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
         }
         .admin-pending-card img {
             width: 100%;
-            max-height: 200px;
+            max-height: 180px;
             object-fit: cover;
             border-radius: 16px;
         }
@@ -517,7 +465,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .admin-pending-card .card-header strong {
@@ -539,9 +487,6 @@
             gap: 10px;
             flex-wrap: wrap;
             justify-content: flex-end;
-        }
-        .admin-pending-card .actions .btn {
-            min-width: 100px;
         }
         .btn-sm {
             padding: 10px 14px;
@@ -566,15 +511,6 @@
             gap: 8px;
             margin-top: 24px;
             flex-wrap: wrap;
-        }
-        .pagination button {
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            background: white;
-            color: var(--surface-soft);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
         }
         .pagination button {
             padding: 8px 12px;
@@ -656,11 +592,7 @@
         </div>
     </header>
     <main>
-        <section id="announcementsSection" class="announcements-section" style="background: white; border-radius: 22px; box-shadow: var(--shadow); padding: 24px; margin: 24px auto 0; max-width: 1200px; margin-left: auto; margin-right: auto; width: calc(100% - 10%); display: none;">
-            <div id="announcementsList" style="display: flex; flex-direction: column; gap: 16px;">
-                <!-- Announcements will be populated here -->
-            </div>
-        </section>
+        
         <section class="search-panel" aria-label="Որոնման կառավարիչ">
             <input id="searchInput" type="text" placeholder="Որոնել անունով կամ նկարագրությամբ..." aria-label="Որո՜նել անունով կամ նկարագրությամբ">
             <select id="citySelect" aria-label="Ընտրել քաղաք">
@@ -707,67 +639,6 @@
                 <option value="Քաջարան">Քաջարան</option>
             </select>
             <button type="button" class="btn btn-primary" onclick="updateListings()">Որոնել</button>
-        </section>
-        <section id="adminPanelSection" class="admin-dashboard hidden" aria-label="Ադմին վահանակ">
-            <div class="admin-panel-header">
-                <div>
-                    <p class="admin-panel-title">Ադմին վահանակ</p>
-                    <p class="admin-panel-subtitle">Գրանցեք, հաստատեք և ջնջեք հայտարարությունները արագ ու անվտանգ մեկ վայրում։</p>
-                </div>
-                <button type="button" class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Ելք</button>
-            </div>
-            <div class="admin-panel-actions">
-                <span class="admin-action-note">Համակարգը հետևում է հայտերի կարգավիճակին. ֆիլտրեք, հաստատեք կամ ջնջեք անմիջապես այս վահանակից։</span>
-                <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել տվյալները</button>
-            </div>
-            <div class="admin-info-bar">
-                <span id="adminPendingCount" class="admin-pill">Բեռնում է...</span>
-            </div>
-            <div class="admin-pending-toolbar">
-                <input id="adminPendingSearch" type="search" placeholder="Որոնել անունով կամ նկարագրությամբ" aria-label="Որոնել pending հայտարարությունները">
-                <select id="adminPendingCity" aria-label="Ֆիլտր pending հայտերը քաղաքի համար">
-                    <option value="">Բոլոր քաղաքները</option>
-                    <option value="Երևան">Երևան</option>
-                    <option value="Գյումրի">Գյումրի</option>
-                    <option value="Վանաձոր">Վանաձոր</option>
-                    <option value="Արտաշատ">Արտաշատ</option>
-                    <option value="Մասիս">Մասիս</option>
-                    <option value="Սևան">Սևան</option>
-                </select>
-                <button type="button" class="btn btn-secondary btn-sm">Դիտել Ենթադրվող</button>
-            </div>
-            <div class="admin-stats">
-                <div class="admin-stat-card">
-                    <strong id="adminTotalCount">-</strong>
-                    <span>Ընդհանուր հայտեր</span>
-                </div>
-                <div class="admin-stat-card">
-                    <strong id="adminApprovedCount">-</strong>
-                    <span>Հաստատված հայտեր</span>
-                </div>
-                <div class="admin-stat-card">
-                    <strong id="adminPendingSummary">-</strong>
-                    <span>Սպասող հայտեր</span>
-                </div>
-            </div>
-            <h4 class="admin-section-title">Սպասման տակ գտնվող հայտեր</h4>
-            <div id="adminPendingList" class="admin-pending-list"></div>
-            
-            <hr style="margin: 28px 0; border: none; border-top: 1px solid #e2e8f0;">
-            
-            <h4 class="admin-section-title">Հայտարարություններ</h4>
-            <div class="admin-announcement-create">
-                <div class="form-field">
-                    <input id="announcementTitle" type="text" placeholder="Հայտարարության վերնագիր" aria-label="Հայտարարության վերնագիր">
-                </div>
-                <div class="form-field">
-                    <textarea id="announcementContent" placeholder="Հայտարարության բովանդակություն" aria-label="Հայտարարության բովանդակություն"></textarea>
-                </div>
-                <button type="button" class="btn btn-primary" onclick="createAnnouncement()">Ստեղծել Հայտարարություն</button>
-            </div>
-            
-            <h4 class="admin-section-title">Ակտիվ Հայտարարություններ</h4>
-            <div id="adminAnnouncementsList" class="admin-pending-list"></div>
         </section>
         <section class="grid" id="listingGrid" aria-live="polite">
             <div id="loading" class="empty-state">Բեռնվում է...</div>
@@ -868,13 +739,56 @@
         <div class="modal-body">
             <button class="modal-close" type="button" aria-label="Փակել" onclick="closeModal('adminModal')">✕</button>
             <h3>Ադմին</h3>
-            <p style="margin:0 0 18px; color:#475569;">Մուտք գործեք ադմին վահանակի միջոցով՝ հրապարակումներ հաստատելու և կառավարելու համար։</p>
             <div id="adminLogin">
                 <div class="form-field">
                     <input id="adminPassword" type="password" placeholder="Գաղտնաբառ" aria-label="Ադմին գաղտնաբառ">
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn btn-primary" onclick="authenticateAdmin()">Մուտք</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('adminModal')">Փակել</button>
+                </div>
+            </div>
+            <div id="adminDashboard" class="admin-dashboard hidden">
+                <div class="admin-panel-header">
+                    <div>
+                        <p class="admin-panel-title">Ադմին կառավարում</p>
+                        <p class="admin-panel-subtitle">Ահա սպասված հայտարարությունները։ Դուք կարող եք հաստատել կամ ջնջել դրանք արագ և անվտանգ։</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Ելք</button>
+                </div>
+                <div class="admin-info-bar">
+                    <span id="adminPendingCount" class="admin-pill">Բեռնում է...</span>
+                </div>
+                <div class="admin-pending-toolbar">
+                    <input id="adminPendingSearch" type="search" placeholder="Որոնել հայտի անունը կամ նկարագրությունը" aria-label="Որոնել pending հայտեր">
+                    <select id="adminPendingCity" aria-label="Ֆիլտր pending հայտերը քաղաքի համար">
+                        <option value="">Բոլոր քաղաքները</option>
+                        <option value="Երևան">Երևան</option>
+                        <option value="Գյումրի">Գյումրի</option>
+                        <option value="Վանաձոր">Վանաձոր</option>
+                        <option value="Արտաշատ">Արտաշատ</option>
+                        <option value="Մասիս">Մասիս</option>
+                        <option value="Սևան">Սևան</option>
+                    </select>
+                    <button type="button" class="btn btn-secondary btn-sm" id="adminPendingRefresh">Թարմացնել</button>
+                </div>
+                <div class="admin-stats">
+                    <div class="admin-stat-card">
+                        <strong id="adminTotalCount">-</strong>
+                        <span>Ընդհանուր հայտեր</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <strong id="adminApprovedCount">-</strong>
+                        <span>Հաստատված հայտեր</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <strong id="adminPendingSummary">-</strong>
+                        <span>Սպասող հայտեր</span>
+                    </div>
+                </div>
+                <h4>Սպասման տակ գտնվող հայտարարություններ</h4>
+                <div id="adminPendingList" class="admin-pending-list"></div>
+                <div class="modal-actions">
                     <button type="button" class="btn btn-secondary" onclick="closeModal('adminModal')">Փակել</button>
                 </div>
             </div>
@@ -896,7 +810,11 @@
             </div>
         </div>
     </div>
-    <script>
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        const contactEmail = 'hayshop333@gmail.com';
+        const adminSecret = '123456789';
         // Supabase setup:
         // 1. Create storage bucket: insert into storage.buckets (id, name, public) values ('advertisements', 'advertisements', true);
         // 2. Create upload policy: create policy "Public upload advertisements" on storage.objects for insert to anon with check (bucket_id = 'advertisements');
@@ -904,12 +822,8 @@
         // 4. Create database table: CREATE TABLE advertisements (id uuid DEFAULT gen_random_uuid() PRIMARY KEY, name text NOT NULL, city text NOT NULL, description text NOT NULL, logo_url text, approved boolean DEFAULT false, created_at timestamptz DEFAULT now());
         // 5. Enable RLS and create policies for the table
 
-        const contactEmail = 'hayshop333@gmail.com';
-        const adminSecret = '123456789';
-
         let listings = [];
         let pendingItems = [];
-        let announcements = [];
         let isAdmin = false;
 
         const state = {
@@ -919,7 +833,6 @@
             adminPendingSearch: null,
             adminPendingCity: null,
             adminRefreshButton: null,
-            adminPanelSection: null,
             logoutBtn: null,
             currentPage: 1,
             itemsPerPage: 12
@@ -929,108 +842,44 @@
             window.alert(text);
         }
 
-        async function loadAnnouncements() {
-            try {
-                const data = await supabaseRequest('announcements', {
-                    params: { select: 'id,title,content,active', active: true, order: 'created_at.desc' }
-                });
-                announcements = Array.isArray(data) ? data : [];
-                renderAnnouncements();
-                // Refresh announcements every 30 seconds
-                setTimeout(() => loadAnnouncements(), 30000);
-            } catch (error) {
-                console.error('Load announcements failed:', error);
-            }
-        }
-
-        function renderAnnouncements() {
-            const list = document.getElementById('announcementsList');
-            const section = document.getElementById('announcementsSection');
-            if (!list || !section) return;
-
-            if (!announcements.length) {
-                section.style.display = 'none';
-                return;
-            }
-
-            section.style.display = 'block';
-            list.innerHTML = '';
-
-            announcements.forEach(announcement => {
-                const item = document.createElement('div');
-                item.style.cssText = 'padding: 14px; background: #f8fafc; border-left: 4px solid #d97706; border-radius: 8px;';
-                
-                const title = document.createElement('strong');
-                title.style.cssText = 'display: block; color: #1e293b; font-size: 1.05rem; margin-bottom: 6px;';
-                title.textContent = announcement.title;
-                item.appendChild(title);
-                
-                const content = document.createElement('p');
-                content.style.cssText = 'margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6;';
-                content.textContent = announcement.content;
-                item.appendChild(content);
-                
-                list.appendChild(item);
-            });
-        }
-
         async function supabaseRequest(endpoint, { method = 'GET', body = null, headers = {}, params = {} } = {}) {
             try {
-                const url = new URL(`https://rulyfpgjujoevvfuolml.supabase.co/rest/v1/${endpoint}`);
-                if (params.select) {
-                    url.searchParams.set('select', params.select);
-                }
-                if (params.order) {
-                    url.searchParams.set('order', params.order);
-                }
-                if (params.approved !== undefined) {
-                    url.searchParams.set('approved', params.approved ? 'eq.true' : 'eq.false');
-                }
-                if (params.active !== undefined) {
-                    url.searchParams.set('active', params.active ? 'eq.true' : 'eq.false');
-                }
-                if (params.id) {
-                    url.searchParams.set('id', `eq.${params.id}`);
-                }
+                let query = supabase.from(endpoint);
 
-                const requestHeaders = {
-                    apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHlmcGdqdWpvZXZ2ZnVvbG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODE2MDUsImV4cCI6MjA5NDA1NzYwNX0._JoE2HYtZDxH8o9livkXS-DQAOLz1ea0qJ-XcGr0wlw',
-                    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHlmcGdqdWpvZXZ2ZnVvbG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODE2MDUsImV4cCI6MjA5NDA1NzYwNX0._JoE2HYtZDxH8o9livkXS-DQAOLz1ea0qJ-XcGr0wlw`,
-                    Accept: 'application/json',
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    ...headers
-                };
-
-                if (body) {
-                    requestHeaders['Content-Type'] = 'application/json';
+                if (method === 'GET') {
+                    if (params.select) {
+                        query = query.select(params.select);
+                    } else {
+                        query = query.select('*');
+                    }
+                    if (params.order) {
+                        const [column, direction] = params.order.split('.');
+                        query = query.order(column, { ascending: direction !== 'desc' });
+                    }
+                    if (params.approved !== undefined) {
+                        query = query.eq('approved', params.approved);
+                    }
+                    const { data, error } = await query;
+                    if (error) throw error;
+                    return data;
+                } else if (method === 'POST') {
+                    const { data, error } = await query.insert(body).select();
+                    if (error) throw error;
+                    return data;
+                } else if (method === 'PATCH') {
+                    if (params.id) {
+                        const { data, error } = await query.update(body).eq('id', params.id).select();
+                        if (error) throw error;
+                        return data;
+                    }
+                } else if (method === 'DELETE') {
+                    if (params.id) {
+                        const { error } = await query.delete().eq('id', params.id);
+                        if (error) throw error;
+                        return null;
+                    }
                 }
-                if (['POST', 'PATCH', 'DELETE'].includes(method.toUpperCase())) {
-                    requestHeaders.Prefer = 'return=representation';
-                }
-
-                const response = await fetch(url.toString(), {
-                    method,
-                    headers: requestHeaders,
-                    body: body ? JSON.stringify(body) : null
-                });
-
-                const text = await response.text();
-                let data = null;
-                try {
-                    data = text ? JSON.parse(text) : null;
-                } catch (_error) {
-                    data = null;
-                }
-
-                if (!response.ok) {
-                    const message = data?.message || data?.error || text || response.statusText;
-                    const error = new Error(`Supabase request failed: ${response.status} ${response.statusText} - ${message}`);
-                    error.response = data;
-                    throw error;
-                }
-
-                return data;
+                throw new Error(`Unsupported method: ${method}`);
             } catch (error) {
                 console.error('Supabase request failed:', error);
                 throw error;
@@ -1066,13 +915,6 @@
             const title = document.createElement('h3');
             title.textContent = item.name;
             content.appendChild(title);
-
-            if (!item.approved) {
-                const statusBadge = document.createElement('span');
-                statusBadge.className = 'status-pill';
-                statusBadge.textContent = 'Սպասում է հաստատմանը';
-                content.appendChild(statusBadge);
-            }
 
             const location = document.createElement('p');
             location.textContent = `📍 ${item.city}`;
@@ -1245,6 +1087,7 @@
         }
 
         function removePendingCard(id) {
+            pendingItems = pendingItems.filter(item => item.id !== id);
             const card = document.querySelector(`.admin-pending-card[data-id="${id}"]`);
             if (card) card.remove();
         }
@@ -1350,12 +1193,21 @@
         function openModal(id) {
             const modal = document.getElementById(id);
             if (!modal) return;
-            if (id === 'adminModal' && isAdmin) {
-                showMessage('Դուք արդեն ադմին ձևաչափում եք. ադմին վահանակը տեսանելի է էջում։');
-                return;
-            }
             modal.classList.add('active');
             modal.setAttribute('aria-hidden', 'false');
+
+            if (id === 'adminModal') {
+                const login = document.getElementById('adminLogin');
+                const dashboard = document.getElementById('adminDashboard');
+                if (isAdmin) {
+                    if (login) login.classList.add('hidden');
+                    if (dashboard) dashboard.classList.remove('hidden');
+                    loadPendingAdmin();
+                } else {
+                    if (login) login.classList.remove('hidden');
+                    if (dashboard) dashboard.classList.add('hidden');
+                }
+            }
         }
 
         function closeModal(id) {
@@ -1387,14 +1239,15 @@
 
             if (passwordInput.value === adminSecret) {
                 isAdmin = true;
-                passwordInput.value = '';
                 renderListings(getVisibleListings());
-                showAdminPanel();
-                if (state.logoutBtn) state.logoutBtn.style.display = 'inline-block';
-                closeModal('adminModal');
                 showMessage('Ադմին մուտքն ընդունված է։');
+
+                const login = document.getElementById('adminLogin');
+                const dashboard = document.getElementById('adminDashboard');
+                if (login) login.classList.add('hidden');
+                if (dashboard) dashboard.classList.remove('hidden');
+                if (state.logoutBtn) state.logoutBtn.style.display = 'inline-block';
                 loadPendingAdmin();
-                loadAdminAnnouncements();
             } else {
                 showMessage('Սխալ գաղտնաբառ։');
             }
@@ -1404,21 +1257,8 @@
             isAdmin = false;
             renderListings(getVisibleListings());
             closeModal('adminModal');
-            hideAdminPanel();
             if (state.logoutBtn) state.logoutBtn.style.display = 'none';
             showMessage('Ադմինից դուրս եկաք։');
-        }
-
-        function showAdminPanel() {
-            const panel = document.getElementById('adminPanelSection');
-            if (!panel) return;
-            panel.classList.remove('hidden');
-        }
-
-        function hideAdminPanel() {
-            const panel = document.getElementById('adminPanelSection');
-            if (!panel) return;
-            panel.classList.add('hidden');
         }
 
         function setFormState(form, isBusy) {
@@ -1445,9 +1285,6 @@
             });
         }
 
-        const SUPABASE_STORAGE_URL = 'https://rulyfpgjujoevvfuolml.supabase.co/storage/v1';
-        const SUPABASE_STORAGE_BUCKET = 'advertisements';
-
         function sanitizeFileName(name) {
             return name
                 .replace(/[^a-zA-Z0-9\-_.]/g, '_')
@@ -1461,24 +1298,19 @@
 
         async function uploadFileToStorage(file) {
             const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
-            const uploadUrl = `${SUPABASE_STORAGE_URL}/object/${SUPABASE_STORAGE_BUCKET}/${encodeURIComponent(fileName)}`;
+            const { data, error } = await supabase.storage
+                .from('advertisements')
+                .upload(fileName, file);
 
-            const response = await fetch(uploadUrl, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHlmcGdqdWpvZXZ2ZnVvbG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODE2MDUsImV4cCI6MjA5NDA1NzYwNX0._JoE2HYtZDxH8o9livkXS-DQAOLz1ea0qJ-XcGr0wlw`,
-                    'Content-Type': file.type,
-                    'Cache-Control': 'no-cache'
-                },
-                body: file
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Storage upload failed: ${response.status} ${response.statusText} - ${errorText}`);
+            if (error) {
+                throw new Error(`Storage upload failed: ${error.message}`);
             }
 
-            return getStoragePublicUrl(fileName);
+            const { data: urlData } = supabase.storage
+                .from('advertisements')
+                .getPublicUrl(fileName);
+
+            return urlData.publicUrl;
         }
 
         async function submitAdvertisement(event) {
@@ -1569,10 +1401,24 @@
             if (!confirmDelete) return;
 
             try {
-                await supabaseRequest('advertisements', {
+                const url = `${SUPABASE_REST_URL}/advertisements?id=eq.${encodeURIComponent(id)}&_=${Date.now()}`;
+                const response = await fetch(url, {
                     method: 'DELETE',
-                    params: { id: id }
+                    headers: {
+                        apikey: SUPABASE_ANON_KEY,
+                        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+                        Accept: 'application/json',
+                        Prefer: 'return=representation',
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
                 });
+
+                const text = await response.text();
+                const data = text ? JSON.parse(text) : null;
+                if (!response.ok) {
+                    throw new Error(data?.message || `Supabase request failed: ${response.status}`);
+                }
 
                 showMessage('✓ Հայտարարությունը հաջողությամբ ջնջվեց։');
                 if (isAdmin) removePendingCard(id);
@@ -1582,156 +1428,6 @@
                 console.error('Delete failed:', error);
                 showMessage(`✗ Ջնջման սխալ: ${error.message}`);
             }
-        }
-
-        async function createAnnouncement() {
-            const titleInput = document.getElementById('announcementTitle');
-            const contentInput = document.getElementById('announcementContent');
-            
-            if (!titleInput || !contentInput) return;
-            
-            const title = titleInput.value.trim();
-            const content = contentInput.value.trim();
-            
-            if (!title || !content) {
-                showMessage('Խնդրում ենք լրացնել բոլոր դաշտերը։');
-                return;
-            }
-
-            try {
-                const newAnnouncement = {
-                    title: title,
-                    content: content,
-                    active: true
-                };
-
-                await supabaseRequest('announcements', {
-                    method: 'POST',
-                    body: newAnnouncement
-                });
-
-                showMessage('✓ Հայտարարությունը հաջողությամբ ստեղծվեց։');
-                titleInput.value = '';
-                contentInput.value = '';
-                await loadAdminAnnouncements();
-                await loadAnnouncements();
-            } catch (error) {
-                console.error('Create announcement failed:', error);
-                showMessage(`✗ Ստեղծման սխալ: ${error.message}`);
-            }
-        }
-
-        async function deleteAnnouncement(id) {
-            const confirmDelete = window.confirm('Ջնջե՞լ այս հայտարարությունը։');
-            if (!confirmDelete) return;
-
-            try {
-                await supabaseRequest('announcements', {
-                    method: 'DELETE',
-                    params: { id: id }
-                });
-
-                showMessage('✓ Հայտարարությունը հաջողությամբ ջնջվեց։');
-                await loadAdminAnnouncements();
-                await loadAnnouncements();
-            } catch (error) {
-                console.error('Delete announcement failed:', error);
-                showMessage(`✗ Ջնջման սխալ: ${error.message}`);
-            }
-        }
-
-        async function toggleAnnouncementActive(id) {
-            const announcement = announcements.find(a => a.id === id);
-            if (!announcement) return;
-
-            try {
-                await supabaseRequest('announcements', {
-                    method: 'PATCH',
-                    params: { id: id },
-                    body: { active: !announcement.active }
-                });
-
-                showMessage('✓ Հայտարարությունը թարմացվեց։');
-                await loadAdminAnnouncements();
-                await loadAnnouncements();
-            } catch (error) {
-                console.error('Toggle announcement failed:', error);
-                showMessage(`✗ Թարմացման սխալ: ${error.message}`);
-            }
-        }
-
-        async function loadAdminAnnouncements() {
-            const list = document.getElementById('adminAnnouncementsList');
-            if (!list) return;
-            
-            try {
-                const data = await supabaseRequest('announcements', {
-                    params: { select: 'id,title,content,active', order: 'created_at.desc' }
-                });
-                const items = Array.isArray(data) ? data : [];
-                renderAnnouncementsAdmin(items);
-            } catch (error) {
-                console.error('Load admin announcements failed:', error);
-            }
-        }
-
-        function renderAnnouncementsAdmin(items) {
-            const list = document.getElementById('adminAnnouncementsList');
-            if (!list) return;
-
-            list.innerHTML = '';
-            if (!items.length) {
-                list.innerHTML = '<div class="empty-state">Ոչ մի հայտարարություն չի ստեղծվել։</div>';
-                return;
-            }
-
-            const fragment = document.createDocumentFragment();
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'admin-pending-card';
-                card.dataset.id = item.id;
-
-                const header = document.createElement('div');
-                header.className = 'card-header';
-
-                const title = document.createElement('strong');
-                title.textContent = item.title;
-                header.appendChild(title);
-
-                const status = document.createElement('span');
-                status.className = 'card-meta';
-                status.textContent = item.active ? '✓ Ակտիվ' : '✗ Պասիվ';
-                header.appendChild(status);
-
-                card.appendChild(header);
-
-                const content = document.createElement('p');
-                content.className = 'description';
-                content.textContent = item.content;
-                card.appendChild(content);
-
-                const actions = document.createElement('div');
-                actions.className = 'actions';
-
-                const toggleButton = document.createElement('button');
-                toggleButton.type = 'button';
-                toggleButton.className = item.active ? 'btn btn-alert btn-sm' : 'btn btn-secondary btn-sm';
-                toggleButton.textContent = item.active ? 'Անջատել' : 'Միացնել';
-                toggleButton.addEventListener('click', () => toggleAnnouncementActive(item.id));
-                actions.appendChild(toggleButton);
-
-                const deleteButton = document.createElement('button');
-                deleteButton.type = 'button';
-                deleteButton.className = 'btn btn-alert btn-sm';
-                deleteButton.textContent = 'Ջնջել';
-                deleteButton.addEventListener('click', () => deleteAnnouncement(item.id));
-                actions.appendChild(deleteButton);
-
-                card.appendChild(actions);
-                fragment.appendChild(card);
-            });
-
-            list.appendChild(fragment);
         }
 
         function showDetails(id) {
@@ -1842,11 +1538,9 @@
             state.adminPendingSearch = document.getElementById('adminPendingSearch');
             state.adminPendingCity = document.getElementById('adminPendingCity');
             state.adminRefreshButton = document.getElementById('adminPendingRefresh');
-            state.adminPanelSection = document.getElementById('adminPanelSection');
             state.logoutBtn = document.getElementById('logoutBtn');
 
             if (state.logoutBtn) state.logoutBtn.style.display = 'none';
-            if (state.adminPanelSection) state.adminPanelSection.classList.add('hidden');
 
             const form = document.getElementById('avelacmanForm');
             if (form) {
@@ -1866,10 +1560,7 @@
                 state.adminPendingCity.addEventListener('change', () => renderPendingAdmin(filterPendingAdmin()));
             }
             if (state.adminRefreshButton) {
-                state.adminRefreshButton.addEventListener('click', () => {
-                    loadPendingAdmin();
-                    loadAdminAnnouncements();
-                });
+                state.adminRefreshButton.addEventListener('click', loadPendingAdmin);
             }
 
             document.querySelectorAll('.modal').forEach(modal => {
@@ -1905,11 +1596,19 @@
                 });
             }
 
-            loadAnnouncements();
             loadListings();
         }
 
         document.addEventListener('DOMContentLoaded', initialize);
+
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.authenticateAdmin = authenticateAdmin;
+        window.logoutAdmin = logoutAdmin;
+        window.updateListings = updateListings;
+        window.resetFilters = resetFilters;
+        window.sendChat = sendChat;
+        window.toggleChat = toggleChat;
 
         window.addEventListener('error', event => {
             console.error('Window error:', event.message, event.filename, event.lineno, event.colno, event.error);
@@ -1927,4 +1626,3 @@
     </script>
 </body>
 </html>
- 
